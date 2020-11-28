@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript">
+
+      var answer = parseInt(Math.random() * 10);
+      var tryCount = 0;
+      var maxTrycount = 5;
+
+      function readInt(){
+        var number = document.getElementById('userAnswer').value;
+        return parseInt(number);
+        // return +document.getElementById('userAnswer').value;
+      }
+
+      function write(text){
+        document.getElementById('info').innerHTML = text;
+      }
+
+      function hide(id){
+        document.getElementById(id).style.display = "none";
+      }
+
+      function guess(){
+        tryCount++;
+        var userAnswer = readInt();
+        if (userAnswer == answer) {
+          write("<b>Поздравляем, вы угадали!</b>");
+          hide("userAnswer");
+          hide("button");
+        } else if (tryCount >= maxTrycount) {
+          write("Вы проиграли. Правильный ответ - " + answer + "!");
+          hide("userAnswer");
+          hide("button");
+        } else if (userAnswer > answer) {
+          write("Число слишком большое. <br> Попробуйте еще раз. Введите число от 0 до 10.");
+        } else if (userAnswer < answer) {
+          write("Число слишком маленькое.<br> Попробуйте еще раз. Введите число от 0 до 10.");
+        }
+
+      }
+
+    </script>
+    <title>Личный сайт</title>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Личный сайт</h1>
+    </div>
+
+    <nav>
+      <ol>
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="puzzle.html">Загадки</a></li>
+        <li><a href="guessing.html">Угадайка</a></li>
+      </ol>
+    </nav>
+
+
+    <div class="content">
+
+      <h2>Угадай - ка!</h2>
+
+      <div class="box">
+        <p id="info">Угадайте число от 0 до 10.</p>
+        <input id="userAnswer" type="text" placeholder="введите ответ" spellcheck="false"  size="20">
+
+        <a href="#" onclick="guess();" id="button" >Начать</a>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      <nav>
+        <ol>
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="puzzle.html">Загадки</a></li>
+          <li><a href="guessing.html">Угадайка</a></li>
+        </ol>
+      </nav>
+      <div class="copywrite">Copyright &copy Dmitry King</div>
+    </div>
+  </body>
+</html>
